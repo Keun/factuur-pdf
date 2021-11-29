@@ -91,11 +91,11 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		$total_tax_ex_high = 0;
 		if($tax[$i] == 'low'){
 			$each_tax = 9;
-			$total_tax_ex_low += $each_total / 100 * $each_tax;// btw prijs
+			$total_tax_ex_low += $each_total / 100 * $each_tax;// btw prijs laag
 		}
 		if($tax[$i] == 'high'){
 			$each_tax = 21;
-			$total_tax_ex_high += $each_total / 100 * $each_tax;// btw prijs
+			$total_tax_ex_high += $each_total / 100 * $each_tax;// btw prijs hoog
 		}
 
 		$each_tax_value = "1.".$each_tax;
