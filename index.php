@@ -49,10 +49,10 @@
 						<label class="my-label">BTW</label>
 						<div class="clear"></div><!--append-->
 						<label class="tax-label">
-							<input type="radio" name="tax[]" value="high" checked/> &nbsp; 21% &nbsp; 
+							<input type="radio" name="tax_nr0" class="radio_tax" lang="0" value="high" checked/> &nbsp; 21% &nbsp; 
 						</label>
 						<label class="tax-label">
-							<input type="radio" name="tax[]" value="low" /> &nbsp; 9%
+							<input type="radio" name="tax_nr0" class="radio_tax" lang="0" value="low" /> &nbsp; 9%
 						</label>
 					</div><!--col-->
 				</div><!--row clone-->

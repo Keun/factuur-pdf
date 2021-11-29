@@ -24,8 +24,15 @@ function submitForm(id)
 	}));
 }
 //end submit form function
+var cloneId = 0;
 $('#cloner').click(function(){
-	$('.clone').clone().find('.form-control').val("").end().removeClass('clone').appendTo('#append').append('<div class="col-md-12"><a class="remover text-right" href="javascript:;">-Remove</a></div>');
+	var clone = $('.clone').clone(true);
+	cloneId++;
+	clone.find('input.radio_tax').prop("name", "tax_nr" + cloneId);
+   
+	$(clone).find('.form-control').val("").end().removeClass('clone').appendTo('#append').append('<div class="col-md-12"><a class="remover text-right" href="javascript:;">-Remove</a></div>');
+
+   
 });
 //end cloner
 $('body').on('click','.remover',function() {

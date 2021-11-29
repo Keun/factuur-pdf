@@ -17,6 +17,10 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 	$address = nl2br($address);
 	//
 	$total = 0;
+
+	// echo "<pre>";
+	// var_dump($_POST);
+	// exit;
 	for($i = 0; $i < sizeof($_POST['name']); $i++)
 	{
 		$item_name[] = htmlen($_POST['name'][$i]);
@@ -24,7 +28,9 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		$quantity_check = check_numeric($_POST['qty'][$i], 'Hoeveelheid kan alleen hele getallen aan.');
 		$price[] = $_POST['price'][$i];
 		$quantity[] = $_POST['qty'][$i];
-		$tax[] = $_POST['tax'][$i];
+		$newKey = "tax_nr{$i}";
+	
+		$tax[] = $_POST[$newKey];
 		$total += $_POST['price'][$i]*$_POST['qty'][$i];
 	}
 	//content
@@ -76,10 +82,12 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 	<th>Prijs</th>
 	<th>Hoeveelheid</th>
 	<th>Totaal (incl. BTW)</th>
-	<th>Totaal (excl. BTW</th>
+	<th>Totaal (excl. BTW)</th>
 	</tr>
 	</thead>
 	<tbody>';
+	$total_tax_ex_low = 0;
+	$total_tax_ex_high = 0;
 	for($i = 0; $i <sizeof($item_name); $i++)
 	{
 		$each_item = $item_name[$i];
@@ -87,27 +95,24 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		$each_quantity = $quantity[$i];
 
 		$each_total = $each_price*$each_quantity;
-		$total_tax_ex_low = 0;
-		$total_tax_ex_high = 0;
 		if($tax[$i] == 'low'){
 			$each_tax = 9;
+			$each_tax_value = "1.0".$each_tax;
 			$total_tax_ex_low += $each_total / 100 * $each_tax;// btw prijs laag
-		}
-		if($tax[$i] == 'high'){
+		}else if($tax[$i] == 'high'){
 			$each_tax = 21;
+			$each_tax_value = "1.".$each_tax;
 			$total_tax_ex_high += $each_total / 100 * $each_tax;// btw prijs hoog
 		}
 
-		$each_tax_value = "1.".$each_tax;
 		$each_total_tax = $each_total / $each_tax_value;// exclusief btw
-
 		$html .= '
 		<tr>
 		<td style="border-bottom: 1px solid #222">'.$each_item.'</td>
 		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_price,2).'</td>
 		<td style="border-bottom: 1px solid #222">'.$each_quantity.'</td>
 		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total,2).'</td>
-		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total_tax,2).'</td>
+		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total_tax,2).' - ('.$each_tax.'%)</td>
 		</tr>
 		';
 	}
