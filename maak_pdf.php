@@ -94,18 +94,16 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		$each_price = $price[$i];
 		$each_quantity = $quantity[$i];
 
-		$each_total = $each_price*$each_quantity;
-		if($tax[$i] == 'low'){
-			$each_tax = 9;
-			$each_tax_value = "1.0".$each_tax;
-			$total_tax_ex_low += $each_total / 100 * $each_tax;// btw prijs laag
-		}else if($tax[$i] == 'high'){
-			$each_tax = 21;
-			$each_tax_value = "1.".$each_tax;
-			$total_tax_ex_high += $each_total / 100 * $each_tax;// btw prijs hoog
-		}
+		//Hier moeten berekeningen komen om:
+		// - Totaal prijs van producten x aantallen
+		// - Totaal prijs inclusief en exclusief btw
+		// - Totaal prijs van alle inclusieve en exclusieve btw producten onder aan de streep optellen en berekenen.
 
-		$each_total_tax = $each_total / $each_tax_value;// exclusief btw
+		//EXTRA:
+		//Verzendkosten erbij rekenen in HTML en PDF zetten
+		//Kortingsbon in percentage of als bedrag in HTML en PDF
+
+	
 		$html .= '
 		<tr>
 		<td style="border-bottom: 1px solid #222">'.$each_item.'</td>
