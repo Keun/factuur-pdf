@@ -98,14 +98,16 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		if($tax[$i] == 'low'){
 			$each_tax = 9;
 			$each_tax_value = "1.0".$each_tax;
-			$total_tax_ex_low += $each_total / 100 * $each_tax;// btw prijs laag
+			$each_total_tax = $each_total / $each_tax_value;// exclusief btw
+			$total_tax_ex_low += $each_total - $each_total_tax;// btw prijs laag
 		}else if($tax[$i] == 'high'){
 			$each_tax = 21;
 			$each_tax_value = "1.".$each_tax;
-			$total_tax_ex_high += $each_total / 100 * $each_tax;// btw prijs hoog
+			$each_total_tax = $each_total / $each_tax_value;// exclusief btw
+			$total_tax_ex_high += $each_total - $each_total_tax;// btw prijs hoog
 		}
 
-		$each_total_tax = $each_total / $each_tax_value;// exclusief btw
+		
 		$html .= '
 		<tr>
 		<td style="border-bottom: 1px solid #222">'.$each_item.'</td>
