@@ -33,21 +33,21 @@
 			</div><!--col-->
 			<div class="col-md-12">
 				<div class="row clone">
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<label class="my-label">Item</label>
 						<input type="text" name="name[]" class="form-control" placeholder="Item name"/>
 					</div><!--col-->
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<label class="my-label">Item prijs</label>
 						<input type="text" name="price[]" class="form-control" placeholder="99.99"/>
 					</div><!--col-->
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<label class="my-label">Hoeveelheid</label>
 						<input type="number" name="qty[]" class="form-control" placeholder="1"/>
 					</div><!--col-->
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<label class="my-label">BTW</label>
-						<div id="append"></div><!--append-->
+						<div class="clear"></div><!--append-->
 						<label class="tax-label">
 							<input type="radio" name="tax[]" value="high" checked/> &nbsp; 21% &nbsp; 
 						</label>
