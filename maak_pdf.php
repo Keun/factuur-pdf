@@ -81,8 +81,8 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 	<th>Item </th>
 	<th>Prijs</th>
 	<th>Hoeveelheid</th>
-	<th>Totaal (incl. BTW)</th>
 	<th>Totaal (excl. BTW)</th>
+	<th>Totaal (incl. BTW)</th>
 	</tr>
 	</thead>
 	<tbody>';
@@ -109,8 +109,8 @@ if(!empty($_POST) && $_POST['action'] == 'pdf')
 		<td style="border-bottom: 1px solid #222">'.$each_item.'</td>
 		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_price,2).'</td>
 		<td style="border-bottom: 1px solid #222">'.$each_quantity.'</td>
-		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total,2).'</td>
 		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total_tax,2).' - ('.$each_tax.'%)</td>
+		<td style="border-bottom: 1px solid #222">&euro; '.number_format($each_total,2).'</td>
 		</tr>
 		';
 	}
